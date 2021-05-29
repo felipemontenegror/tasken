@@ -35,4 +35,37 @@ router.get('/:id',[], async (req, res) => {
 })
 
 
+//Route Post || Criar um produto 
+// Acess Public
+router.post('/', [
+  check('id').not().isEmpty(),
+  check('nomeDoProduto').not().isEmpty(),
+  check('fabricante').not().isEmpty(),
+  check('quantidadeDoProduto').not().isEmpty(),
+  check('preco').not().isEmpty(),
+], async (req, res, next) => {
+
+  try {
+    let { id, nomeDoProduto, fabricante, quantidadeDoProduto, preco } = req.body
+
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    } else {
+      let product = new Product({ id, nomeDoProduto, fabricante, quantidadeDoProduto, preco })
+      
+      await product.save()
+
+      if (product.id) {
+        res.json(product)
+      }
+    }
+  } catch (err) {
+    console.log(err.message)
+    res.status(500).send({ "error": MSGS.GENERIC_ERROR })
+  }
+})
+
+
   module.exports = router
