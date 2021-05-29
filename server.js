@@ -10,6 +10,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
+//rotas de endpoint
+app.use('/product', require('./routes/api/product'))
+
 app.get('/', (req, res) => res.send('Server Hello'))
 
 app.listen(PORT, () => { 

@@ -39,8 +39,8 @@ router.get('/:id',[], async (req, res) => {
 // Acess Public
 router.post('/', [
   check('id').not().isEmpty(),
-  check('nomeDoProduto').not().isEmpty(),
-  check('fabricante').not().isEmpty(),
+  check('nomeDoProduto').not().isEmpty(),toLowerCase(),
+  check('fabricante').not().isEmpty(),toLowerCase(),
   check('quantidadeDoProduto').not().isEmpty(),
   check('preco').not().isEmpty(),
 ], async (req, res, next) => {
@@ -87,6 +87,22 @@ router.patch('/:id', async (req, res, next) => {
 });
 
 
+//Route Delete || Deletar produto por ID
+// Acess Public
+router.delete('/:id', [], async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const product = await Product.findOneAndDelete({_id: id })
+    if (product) {
+      res.send(product)
+    } else {
+      res.status(404).send({ "error": MSGS.PRODUCT404 })
+    }
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send({ "error": MSGS.GENERIC_ERROR })
+  }
+})
 
 
   module.exports = router
