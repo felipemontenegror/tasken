@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 
 
 //db
-const sequelize = new Sequelize('product', 'root', 'crafterjr88', {
+const sequelize = new Sequelize('dbproduct', 'root', 'crafterjr88', {
     host: 'localhost',
     dialect: 'mysql'
 })

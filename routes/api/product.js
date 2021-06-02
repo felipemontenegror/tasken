@@ -9,7 +9,7 @@ const router = express.Router()
 // Acess Public
 router.get('/', async (req, res) => {
     try {
-      const product = await Product.find({})
+      const product = await Product.findAll({})
       res.json(product)
     } catch (err) {
       console.error(err.message)
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id',[], async (req, res) => {
   try {
     const id = req.params.id
-    const product = await Product.findOne({_id : id})
+    const product = await Product.findOne({ where: { id: 'id'} })
     if(product){
       res.json(product)
     } else {
