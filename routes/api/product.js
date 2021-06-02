@@ -39,8 +39,8 @@ router.get('/:id',[], async (req, res) => {
 // Acess Public
 router.post('/', [
   check('id').not().isEmpty(),
-  check('nomeDoProduto').not().isEmpty(),toLowerCase(),
-  check('fabricante').not().isEmpty(),toLowerCase(),
+  check('nomeDoProduto').not().isEmpty(),
+  check('fabricante').not().isEmpty(),
   check('quantidadeDoProduto').not().isEmpty(),
   check('preco').not().isEmpty(),
 ], async (req, res, next) => {

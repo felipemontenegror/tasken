@@ -5,3 +5,6 @@ npm-debug.log
 /*.env
 ./config/default.json
 default.json
+./config/db_mysql.js
+./config
+./tabela.sql

@@ -1,7 +1,18 @@
 const express = require('express')
 var cors = require('cors')
 const app = express()
+const Sequelize = require('sequelize')
 const PORT = process.env.PORT || 3000
+
+
+//db
+const sequelize = new Sequelize('product', 'root', 'crafterjr88', {
+    host: 'localhost',
+    dialect: 'mysql'
+})
+
+
+
 
 // Middleware
 app.use(cors())
