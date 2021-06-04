@@ -1,29 +1,29 @@
 const Sequelize = require('sequelize')
 const database = require('../config/db')
  
-const Product = database.define('product', {
+const Product = database.sequelize.define('dbproduct', {
     id: {
-        type: Sequelize.INTEGER,
+        type: database.Sequelize.INTEGER,
         //autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
     nomeDoProduto: {
-        type: Sequelize.STRING,
+        type: database.Sequelize.STRING,
         allowNull: false
     },
 
     fabricante: {
-        type: Sequelize.STRING,
+        type: database.Sequelize.STRING,
         allowNull: false
     },
 
     quantidadeDoProduto: {
-        type: Sequelize.INTEGER
+        type: database.Sequelize.INTEGER
     },
 
     preco: {
-        type: Sequelize.DECIMAL
+        type: database.Sequelize.DECIMAL
     },
     descricao: Sequelize.STRING
 })

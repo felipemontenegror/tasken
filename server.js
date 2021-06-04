@@ -14,6 +14,9 @@ const sequelize = new Sequelize('dbproduct', 'root', 'crafterjr88', {
 
 
 
+
+
+
 // Middleware
 app.use(cors())
 app.use(express.json())  //chamada BodyParser atualizada na versão 4 do node
